@@ -1,0 +1,12 @@
+diff a/app/Http/Controllers/LoginController.php b/app/Http/Controllers/LoginController.php	(rejected hunks)
+@@ -43,8 +43,9 @@
+     /**
+      * ログアウト処理
+      */
+-    public function logout()
++    public function logout(Request $request)
+     {
++        $request->session()->flush();
+         return redirect('/login');
+     }
+ }
