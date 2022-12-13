@@ -43,9 +43,8 @@ class LoginController extends Controller
     /**
      * ログアウト処理
      */
-    public function logout(Request $request)
+    public function logout()
     {
-        $request->session()->flush();
         return redirect('/login');
     }
 }
