@@ -30,8 +30,8 @@ class HomeController extends Controller
         // 各ユーザーの投稿を取得
         $posts = [];
         foreach ($users as $user) {
-            foreach ($user->posts() as $post) {
-                array_push($posts, array('user' => $user, 'post' => $post));
+            foreach ($user->posts() as $post  ) {
+                array_push($posts, array('user' => $user, 'post' => $post,));
             }
         }
 
