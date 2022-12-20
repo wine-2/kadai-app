@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Controllers\Controller,
     Session;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -40,7 +41,7 @@ class PostController extends Controller
 
         // データ登録
         $rules = [
-            'postContent' => 'min:1|required|max:100',
+            'postContent' => 'required|min:1|max:100',
         ];
 
         $messages = [

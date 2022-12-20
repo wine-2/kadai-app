@@ -6,13 +6,13 @@
 	"recommendations": [
 		"shufo.vscode-blade-formatter",
 		"onecentlin.laravel-blade",
-		"ms-ceintl.vscode-language-pack-ja",
 		"amirmarmul.laravel-blade-vscode",
 		"austenc.laravel-blade-spacer",
 		"ctf0.laravel-goto-controller",
 		"codingyu.laravel-goto-view",
 		"onecentlin.laravel5-snippets",
-		"bmewburn.vscode-intelephense-client"
+		"bmewburn.vscode-intelephense-client",
+		"ms-ceintl.vscode-language-pack-ja"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [
