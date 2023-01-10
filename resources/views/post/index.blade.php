@@ -18,7 +18,7 @@
             @csrf
             <textarea name="postContent" id="content" cols="30" rows="5" placeholder="いまどうしてる?"></textarea>
             <div class="post-button">
-                <input class="button-white" type="button" value="送信する" name="botan" onclick="check()">
+                <input class="button-white" type="button" value="送信する" onclick="check()">
                 </input>
             </div>
             @error('postContent')
@@ -34,16 +34,13 @@
 <script src="{{ asset('/js/app.js') }}"></script>
 <script>
 
-
-
-    txt = document.post.postContent.value;
-    a = txt.length;
-
     function check() {
+        txt = document.post.postContent.value;
+        a = txt.length;
         if (a < 1) {
-            alert("文字数が足りません")
+            alert("1文字以上にしてください");
         } else if (a > 140) {
-            alert("文字数が多すぎます")
+            alert("140文字以下にしてください");
         } else {
             document.post.submit()
         }
