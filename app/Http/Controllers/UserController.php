@@ -123,7 +123,40 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //TODO 登録処理
+        // e-mailあるか確認
+    
+        if ($user == null) {
+            return view('login', compact('errorMessage'));
+        }else{
+             return view('user.signup', compact('errorMessage'));
 
+        }
+        // バリデーション
+        
+        $rules = [
+            'postContent' => 'required|min:1|max:100',
+        ];
+
+        $messages = [
+            'required' => '必須項目です', 'max' => '100文字以下にしてください。', 'min' => '1文字以上にしてください。'
+        ];
+
+        Validator::make(
+            $request->all(),
+            $rules,
+            $messages
+        )->validate();
+        // e-mail、パスワードいれるフェーズ
+        $post = new Post;
+        $post->user = $loginUser->id;
+        $post->content = $request->postContent;
+        $post->save();
+
+        
+
+
+        // 成功
+        Session::put('user', $user);
         return redirect('/');
     }
 }

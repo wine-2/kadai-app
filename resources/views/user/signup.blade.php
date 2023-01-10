@@ -14,30 +14,67 @@
 <body class="">
     <x-header></x-header>
     <div class="page singup-page">
-        <h2>課題: ここに新規登録ページを作ること</h2>
-        <h3>必要なフォームパーツ</h3>
-        <ul>
-            <li>Email入力フォーム</li>
-            <li>パスワード入力フォーム</li>
-            <li>登録ボタン</li>
-        </ul>
-        <h3>バリデーションルール</h3>
-        <h4>メールアドレス</h4>
-        <ul>
-            <li>●●●@×××の形式になっていること</li>
-            <li>半角英数、記号のみを許容すること</li>
-        </ul>
-        <h4>パスワード</h4>
-        <ul>
-            <li>半角英数、記号のみを許容すること</li>
-            <li>8文字以上であること</li>
-        </ul>
-        <p>
-            JavascriptとUserControllorの両方で同じバリデーションを設けること
-        </p>
-    </div>
+        <form class="form" action="/login" method="post">
+            @csrf
+            <div class="form-item email">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" />
+            </div>
+            <div class="form-item password">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" />
+            </div>
+
+            <div class="singup-button">
+                <button class="button-white" type="submit">登録</button>
+            </div>
+        </form>
+
 </body>
 <script src="{{ asset('/js/app.js') }}"></script>
-<style scoped></style>
+<style scoped>
+    .singup-page {
+        display: flex;
+        justify-content: center;
+    }
+
+    .singup-page .title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .singup-page .form {
+        width: 60vw;
+    }
+
+    .singup-page input {
+        height: 30px;
+        border-radius: 10px;
+        background-color: lightgray;
+    }
+
+    .singup-page .form-item {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .singup-page .singup-button {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .singup-page button {
+        width: 50%;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .singup-page .error-message {
+        margin-top: 5px;
+        font-size: 10px;
+    }
+</style>
 
 </html>
