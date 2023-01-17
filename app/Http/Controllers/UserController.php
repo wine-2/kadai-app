@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller,
     Session;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+
 
 class UserController extends Controller
 {
@@ -125,20 +127,17 @@ class UserController extends Controller
         //TODO 登録処理
         // e-mailあるか確認
     
-        if ($user == null) {
-            return view('login', compact('errorMessage'));
-        }else{
-             return view('user.signup', compact('errorMessage'));
-
-        }
+        
         // バリデーション
         
         $rules = [
-            'postContent' => 'required|min:1|max:100',
+            'name' =>'required',
+            'email' => 'required|email|min:1',
+            'password' => 'required|min:8',
         ];
 
         $messages = [
-            'required' => '必須項目です', 'max' => '100文字以下にしてください。', 'min' => '1文字以上にしてください。'
+            'required' => '必須項目です', 'min' => '8文字以上にしてください。','email' => 'メールアドレスの形式にしてください。'
         ];
 
         Validator::make(
@@ -147,10 +146,11 @@ class UserController extends Controller
             $messages
         )->validate();
         // e-mail、パスワードいれるフェーズ
-        $post = new Post;
-        $post->user = $loginUser->id;
-        $post->content = $request->postContent;
-        $post->save();
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
 
         
 
